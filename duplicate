@@ -1,0 +1,30 @@
+
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] A = {4, 7, 2, 8, 4, 1, 7, 5};
+        System.out.println(findDifferenceBetweenFirstAndLastDuplicate(A));
+    }
+
+    public static int findDifferenceBetweenFirstAndLastDuplicate(int[] A) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        Integer firstDuplicate = null;
+        Integer lastDuplicate = null;
+        for (int i = 0; i < A.length; i++) {
+            int num = A[i];
+            if (map.containsKey(num)) {
+                if (firstDuplicate == null) {
+                    firstDuplicate = num;
+                }
+                lastDuplicate = num;
+            } else {
+                map.put(num, i);
+            }
+        }
+        if (firstDuplicate == null || lastDuplicate == null) {
+            throw new RuntimeException("No duplicates found in the array.");
+        }
+        return lastDuplicate - firstDuplicate;
+    }
+}
