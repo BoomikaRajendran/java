@@ -1,0 +1,49 @@
+import java.util.*;
+public class Student {
+    String name;
+    String regNo;
+    String dept;
+    int year;
+    int semester;
+    int[] marks = new int[6];
+    int total;
+    double average;
+
+    public void getDetails(String name, String regNo, String dept, int year, int semester,
+                           int mark1, int mark2, int mark3, int mark4, int mark5, int mark6) {
+        this.name = name;
+        this.regNo = regNo;
+        this.dept = dept;
+        this.year = year;
+        this.semester = semester;
+        this.marks[0] = mark1;
+        this.marks[1] = mark2;
+        this.marks[2] = mark3;
+        this.marks[3] = mark4;
+        this.marks[4] = mark5;
+        this.marks[5] = mark6;
+        this.total = mark1 + mark2 + mark3 + mark4 + mark5 + mark6;
+        this.average = (double) this.total / marks.length;
+    }
+
+    public void display() {
+        System.out.println("Student Name: " + name);
+        System.out.println("Registration No: " + regNo);
+        System.out.println("Department: " + dept);
+        System.out.println("Year: " + year);
+        System.out.println("Semester: " + semester);
+        System.out.println("Marks: ");
+        for (int i = 0; i < marks.length; i++) {
+            System.out.println("Mark" + (i + 1) + ": " + marks[i]);
+        }
+        System.out.println("Total Marks: " + total);
+        System.out.printf("Average Marks: %.2f\n", average);
+        System.out.printf("Percentage: %.2f%%\n", average); 
+    }
+
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.getDetails("John Doe", "REG12345", "Computer Science", 2, 1, 85, 90, 78, 92, 88, 76);
+        student.display();
+    }
+}
